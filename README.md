@@ -1,3 +1,3 @@
 # ChatLLM
 
-Customizable chatbot wrapped around on LLM APIs.
+Customizable chatbots wrapped around on LLM APIs.
