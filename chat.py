@@ -17,12 +17,16 @@ st.set_page_config(
 # 侧边栏配置
 with st.sidebar:
     st.header("Chatbot Settings")
-    system_message = st.text_area(label="Character", placeholder="What character does the robot need to play?")
+    system_message = st.text_area(
+        label="Character", placeholder="What character does the robot need to play?"
+    )
     model = st.selectbox(
         "Model",
-        options=["GPT-3.5", "GPT-3.5 (Azure)", "GPT-4", "Claude 1", "Claude 2", "Claude Instant"],
+        options=["GPT-3.5", "GPT-4", "Claude 1", "Claude 2", "Claude Instant"],
     )
-    temperature = st.slider("Randomness", min_value=0.0, max_value=1.0, step=0.01, value=0.0)
+    temperature = st.slider(
+        "Randomness", min_value=0.0, max_value=1.0, step=0.01, value=0.0
+    )
     change_config = st.button(label="Confirm Settings")
     clean_history = st.button(label="Clear Conversation History")
 

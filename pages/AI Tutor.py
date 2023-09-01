@@ -41,13 +41,12 @@ Instructions:
         "Model",
         options=[
             "GPT-3.5",
-            "GPT-3.5 (Azure)",
             "GPT-4",
             "Claude 1",
             "Claude 2",
             "Claude Instant",
         ],
-        index=2,
+        index=1,
     )
     temperature = st.slider(
         "Randomness", min_value=0.0, max_value=1.0, step=0.01, value=0.0

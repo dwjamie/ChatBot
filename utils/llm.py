@@ -10,13 +10,6 @@ def create_chatbot(model, temperature, system_message, functions=None, pl_tags=[
             temperature=temperature,
             pl_tags=pl_tags,
         )
-    elif model == "GPT-3.5 (Azure)":
-        st.session_state.chatbot = agent.AzureOpenAI(
-            functions=functions,
-            model="gpt-35-turbo",
-            temperature=temperature,
-            pl_tags=pl_tags,
-        )
     elif model == "GPT-4":
         st.session_state.chatbot = agent.OpenAI(
             functions=functions, model="gpt-4", temperature=temperature, pl_tags=pl_tags
