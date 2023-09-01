@@ -11,7 +11,7 @@ st.set_page_config(
     page_icon="🧾",
     initial_sidebar_state="expanded",
     menu_items={
-        "About": "Hi! **Jamie** developed me! Contact him [here](https://github.com/dwjamie/chatbot) if you have any problems."
+        "About": "Hi! **Jamie** developed me! Contact him [here](https://github.com/dwjamie/ChatLLM) if you have any problems."
     },
 )
 
