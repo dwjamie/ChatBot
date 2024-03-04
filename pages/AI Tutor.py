@@ -47,11 +47,11 @@ Communication Best Practices:
     model = st.selectbox(
         "Model",
         options=[
-            "GPT-3.5",
-            "GPT-4",
-            "Claude 1",
-            "Claude 2",
-            "Claude Instant",
+            "GPT-3.5 Turbo",
+            "GPT-4 Turbo",
+            "Claude 2.1",
+            "Claude 3 Sonnet",
+            "Claude 3 Opus",
         ],
         index=1,
     )
