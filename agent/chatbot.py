@@ -64,7 +64,7 @@ class Claude:
 
     def add_message(self, role, content):
         if role in ["user", "assistant"]:
-            if self.messages[-1]["role"] == role:
+            if len(self.messages) >= 1 and self.messages[-1]["role"] == role:
                 self.messages[-1]["content"] += "\n" + content
             else:
                 self.messages.append({"role": role, "content": content})
