@@ -24,7 +24,8 @@ class OpenAI:
 
     def chat_no_stream(self, user_message):
         self.messages.append({"role": "user", "content": user_message})
-        assistant_message = openai.ChatCompletion.create(
+        chatgpt = openai.OpenAI()
+        assistant_message = chatgpt.chat.completions.create(
             messages=self.messages,
             model=self.model,
             temperature=self.temperature,
@@ -35,7 +36,8 @@ class OpenAI:
 
     def chat(self, user_message):
         self.messages.append({"role": "user", "content": user_message})
-        assistant_response = openai.ChatCompletion.create(
+        chatgpt = openai.OpenAI()
+        assistant_response = chatgpt.chat.completions.create(
             messages=self.messages,
             model=self.model,
             temperature=self.temperature,
@@ -43,9 +45,9 @@ class OpenAI:
             pl_tags=self.pl_tags,
         )
         for chunk in assistant_response:
-            chunk = chunk["choices"][0]["delta"]
-            if chunk.get("content"):
-                yield chunk["content"]
+            token = chunk.choices[0].delta
+            if token.content:
+                yield token.content
 
 
 class Claude:
