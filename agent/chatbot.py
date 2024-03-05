@@ -6,7 +6,7 @@ import promptlayer
 promptlayer.api_key = st.secrets["promptlayer"]["api_key"]
 
 openai = promptlayer.openai
-openai.api_key = st.secrets["openai"]["api_key"]
+os.environ["OPENAI_API_KEY"] = st.secrets["anthropic"]["api_key"]
 
 anthropic = promptlayer.anthropic
 os.environ["ANTHROPIC_API_KEY"] = st.secrets["anthropic"]["api_key"]
