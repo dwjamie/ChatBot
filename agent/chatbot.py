@@ -2,6 +2,7 @@ import streamlit as st
 import os
 
 import promptlayer
+
 promptlayer.api_key = st.secrets["promptlayer"]["api_key"]
 
 openai = promptlayer.openai
@@ -66,20 +67,18 @@ class Claude:
     def __init__(self, **kwargs):
         anthropic.api_key = st.secrets["anthropic"]["api_key"]
         self.messages = kwargs.get("messages", "")
-        self.model = kwargs.get("model", "claude-2")
+        self.model = kwargs.get("model", "claude-2.1")
         self.temperature = kwargs.get("temperature", None)
         self.pl_tags = kwargs.get("pl_tags", [])
 
     def add_message(self, role, content):
         if role == "assistant":
-            self.messages += anthropic.AI_PROMPT + " " + content
+            self.messages += "\n\nAssistant:" + " " + content
         else:
-            self.messages += anthropic.HUMAN_PROMPT + " " + content
+            self.messages += "\n\nHuman:" + " " + content
 
     def chat_no_stream(self, user_message):
-        self.messages += (
-            anthropic.HUMAN_PROMPT + " " + user_message + anthropic.AI_PROMPT + " "
-        )
+        self.messages += "\n\nHuman:" + " " + user_message + "\n\nAssistant:" + " "
         claude = anthropic.Anthropic()
         assistant_message = claude.completions.create(
             prompt=self.messages,
@@ -92,9 +91,7 @@ class Claude:
         return assistant_message
 
     def chat(self, user_message):
-        self.messages += (
-            anthropic.HUMAN_PROMPT + " " + user_message + anthropic.AI_PROMPT + " "
-        )
+        self.messages += "\n\nHuman:" + " " + user_message + "\n\nAssistant:" + " "
         claude = anthropic.Anthropic()
         assistant_response = claude.completions.create(
             prompt=self.messages,
