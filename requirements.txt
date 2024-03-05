@@ -1,5 +1,5 @@
 streamlit
 promptlayer
-openai==0.28
+openai
 anthropic
 tiktoken
