@@ -29,6 +29,7 @@ with st.sidebar:
             "Claude 3 Sonnet",
             "Claude 3 Opus",
         ],
+        index=4,
     )
     temperature = st.slider(
         "Randomness", min_value=0.0, max_value=1.0, step=0.01, value=0.0
