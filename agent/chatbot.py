@@ -15,7 +15,6 @@ os.environ["ANTHROPIC_API_KEY"] = st.secrets["anthropic"]["api_key"]
 class OpenAI:
     def __init__(self, **kwargs):
         self.messages = kwargs.get("messages", [])
-        self.functions = kwargs.get("functions", None)
         self.model = kwargs.get("model", "gpt-3.5-turbo")
         self.temperature = kwargs.get("temperature", None)
         self.pl_tags = kwargs.get("pl_tags", [])
@@ -23,30 +22,16 @@ class OpenAI:
     def add_message(self, role, content):
         self.messages.append({"role": role, "content": content})
 
-    def chat_no_stream(self, user_message, function_call=False):
+    def chat_no_stream(self, user_message):
         self.messages.append({"role": "user", "content": user_message})
-        if not function_call:
-            assistant_message = openai.ChatCompletion.create(
-                messages=self.messages,
-                model=self.model,
-                temperature=self.temperature,
-                pl_tags=self.pl_tags,
-            )["choices"][0]["message"]
-            self.messages.append(assistant_message)
-            return assistant_message["content"]
-        else:
-            assistant_message = openai.ChatCompletion.create(
-                messages=self.messages,
-                functions=self.functions,
-                model=self.model,
-                temperature=self.temperature,
-                pl_tags=self.pl_tags,
-            )["choices"][0]["message"]
-            if assistant_message["content"]:
-                self.messages.append(assistant_message)
-                return False, assistant_message["content"]
-            else:
-                return True, assistant_message["function_call"]
+        assistant_message = openai.ChatCompletion.create(
+            messages=self.messages,
+            model=self.model,
+            temperature=self.temperature,
+            pl_tags=self.pl_tags,
+        )["choices"][0]["message"]
+        self.messages.append(assistant_message)
+        return assistant_message["content"]
 
     def chat(self, user_message):
         self.messages.append({"role": "user", "content": user_message})

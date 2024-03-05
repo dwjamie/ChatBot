@@ -2,17 +2,15 @@ import streamlit as st
 import agent
 
 
-def create_chatbot(model, temperature, system_message, functions=None, pl_tags=[]):
+def create_chatbot(model, temperature, system_message, pl_tags=[]):
     if model == "GPT-3.5 Turbo":
         st.session_state.chatbot = agent.OpenAI(
-            functions=functions,
             model="gpt-3.5-turbo",
             temperature=temperature,
             pl_tags=pl_tags,
         )
     elif model == "GPT-4 Turbo":
         st.session_state.chatbot = agent.OpenAI(
-            functions=functions,
             model="gpt-4-turbo-preview",
             temperature=temperature,
             pl_tags=pl_tags,
