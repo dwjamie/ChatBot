@@ -23,13 +23,14 @@ with st.sidebar:
     model = st.selectbox(
         "Model",
         options=[
-            "GPT-3.5 Turbo",
             "GPT-4 Turbo",
-            "Claude 2.1",
-            "Claude 3 Sonnet",
+            "GPT-3.5 Turbo",
             "Claude 3 Opus",
+            "Claude 3 Sonnet",
+            "Claude 3 Haiku",
+            "Claude 2.1",
         ],
-        index=4,
+        index=2,
     )
     temperature = st.slider(
         "Randomness", min_value=0.0, max_value=1.0, step=0.01, value=0.0
