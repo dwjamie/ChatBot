@@ -5,7 +5,7 @@ import agent
 def create_chatbot(model, temperature, system_message, pl_tags=[]):
     if model == "GPT-4 Turbo":
         st.session_state.chatbot = agent.OpenAI(
-            model="gpt-4-turbo-preview",
+            model="gpt-4-turbo",
             temperature=temperature,
             pl_tags=pl_tags,
         )
