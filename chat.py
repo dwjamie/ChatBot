@@ -7,7 +7,7 @@ from utils import render_messages, create_chatbot
 page_title = "Chatbot"  # 网页标题
 st.set_page_config(
     page_title=page_title,
-    page_icon="random",
+    page_icon="💬",
     menu_items={
         "About": "Hi! **Jamie** developed me! Contact him [here](https://github.com/dwjamie/ChatLLM) if you have any problems."
     },
